@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { checkProps } from '../../../test/testUtils'
 import { storeFactory } from '../../../test/testUtils'
-import CreateProcess from './CreateProcess'
+import CreateProcess from './ProcessModulePage'
 
 const defaultProps = {
     id: '123',

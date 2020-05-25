@@ -22,7 +22,7 @@ export const getAllProcessesAction = createAction(ACTION_TYPES.GET_ALL_PROCESSES
  */
 export const getAllProcessesSuccessAction = createAction(ACTION_TYPES.GET_ALL_PROCESSES_SUCCESS)
 /**
- * @function createProcess
+ * @function processModulePage
  * @returns {object} - Action object with type `CREATE_PROCESS`
  */
 export const createProcessAction = createAction(ACTION_TYPES.CREATE_PROCESS)

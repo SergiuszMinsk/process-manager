@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 
 import { GlobalStyles } from './styles'
 import { mainTheme } from './themes'
-import CreateProcess from './components/createProcess/CreateProcess'
+import ProcessModulePage from './components/processModulePage/ProcessModulePage'
 import createStore from './store/appStore'
 
 const store = createStore()
@@ -12,7 +12,7 @@ const store = createStore()
 const App = () => (
     <ThemeProvider theme={mainTheme}>
         <Provider store={store}>
-            <CreateProcess />
+            <ProcessModulePage />
             <GlobalStyles />
         </Provider>
     </ThemeProvider>

@@ -7,7 +7,7 @@ export const generateRandomNumber = (min = 1,max = 10 ) =>
 
 export const generateUniqueString = () => String(Math.random().toString(36).substr(2, 9))
 
-export const generateJobsByJobsCount = ({ jobsCount, id }) => {
+export const generateJobsByJobsCount = (jobsCount, id) => {
     let results = []
 
     for (let i = 0; i < jobsCount; i++) {

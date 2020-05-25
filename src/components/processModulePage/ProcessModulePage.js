@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { CONSTANTS, SORT_KEYS} from '../../constants'
-import { generateRandomNumber, generateUniqueString } from '../../utils'
+import { generateUniqueString } from '../../utils'
 import ProcessesList  from '../processesList/ProcessesList'
 import SearchProcess from '../searchProcess/SearchProcess'
 import SortProcess from '../sortProcess/SortProcess'
@@ -12,13 +12,13 @@ import {
     sortProcessAction,
     searchProcessAction,
 } from '../../actions'
-import { StyledCreateProcessWrapper, StyledCreateProcessButton, } from './CreateProcessStyles'
+import { StyledCreateProcessWrapper, StyledCreateProcessButton, } from './ProcessModulePageStyles'
 
 /**
  * Functional react component for create process
  * @returns {JSX.Element} - Rendered create process button and child components
  */
-const CreateProcess = ({
+const ProcessModulePage = ({
         processes,
         createProcessAction,
         getAllProcessesAction,
@@ -30,7 +30,7 @@ const CreateProcess = ({
 
     useEffect(() => {
         getAllProcessesAction()
-    }, [])
+    }, [getAllProcessesAction])
 
     const handleSortProcess = sortKey => {
         sortProcessAction(sortKey)
@@ -50,9 +50,6 @@ const CreateProcess = ({
     const handleCreateProcess = () => {
         createProcessAction({
             id: generateUniqueString(),
-            name: generateUniqueString(),
-            startTime: generateRandomNumber(CONSTANTS.START_TIME_FROM, CONSTANTS.START_TIME_TO),
-            jobsCount: generateRandomNumber(),
         })
     }
 
@@ -80,27 +77,11 @@ const CreateProcess = ({
     )
 }
 
-CreateProcess.propTypes = {
-    id: PropTypes.string,
-    name: PropTypes.string,
-    startTime: PropTypes.number,
-    jobsCount: PropTypes.number,
-    jobs: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        processId: PropTypes.string.isRequired,
-        status: PropTypes.string.isRequired,
-    })),
+ProcessModulePage.propTypes = {
     getAllProcessesAction: PropTypes.func.isRequired,
     createProcessAction: PropTypes.func.isRequired,
-    sortProcessAction: PropTypes.func.isRequired
-}
-
-CreateProcess.defaultProps = {
-    id: '',
-    name: '',
-    startTime: 0,
-    jobsCount: 0,
+    sortProcessAction: PropTypes.func.isRequired,
+    searchProcessAction: PropTypes.func.isRequired,
 }
 
 export default connect(
@@ -113,4 +94,4 @@ export default connect(
         sortProcessAction,
         searchProcessAction,
     },
-)(CreateProcess)
+)(ProcessModulePage)

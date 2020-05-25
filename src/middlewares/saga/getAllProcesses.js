@@ -16,6 +16,7 @@ function* getAllProcesses() {
         yield put(getAllProcessesSuccessAction(response))
 
     } catch (error) {
+        //yield put(getAllProcessesFailureAction())
         console.error(error)
     }
 }

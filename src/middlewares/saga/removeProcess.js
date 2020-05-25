@@ -19,6 +19,7 @@ function* removeProcess({ payload: processId }) {
         yield put(removeProcessSuccessAction(processId))
 
     } catch (error) {
+        //yield put(removeProcessFailureAction())
         console.error(error)
     }
 }
