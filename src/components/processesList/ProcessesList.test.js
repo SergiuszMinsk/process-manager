@@ -19,7 +19,7 @@ describe('processesList render', () => {
         const processesListWrapper = findByTestAttrs(wrapper, 'processes-list-wrapper')
         expect(processesListWrapper.length).toBe(0)
     })
-    test('should render wrapper if processes is not empty', () => {
+    test('should render process items if appropriate prop was passed', () => {
         const wrapper = setup([{
             id: 'acqktokf9',
             jobsCount: 9,
@@ -31,8 +31,19 @@ describe('processesList render', () => {
                 status: 'RUNNING',
                 processId: 'acqktokf9'
             }]
+        }, {
+            id: 'sfdsfsf',
+            jobsCount: 23,
+            name: 'sdfsfdsf',
+            startTime: 17,
+            jobs: [{
+                name: '2335',
+                id: '236724',
+                status: 'FAILURE',
+                processId: 'acqktokf9'
+            }]
         }])
         const processesListWrapper = findByTestAttrs(wrapper, 'processes-list-wrapper')
-        expect(processesListWrapper.length).toBe(1)
+        expect(processesListWrapper.debug()).toMatchSnapshot()
     })
 })
